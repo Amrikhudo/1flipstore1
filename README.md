@@ -1,3 +1,11 @@
+![Версия](https://img.shields.io/badge/Версия-1.0.0-blue)
+![Статус проекта](https://img.shields.io/badge/Статус-В%20разработке-yellow)
+![Звезды](https://img.shields.io/github/stars/Amrikhudo/my-biggest-project?style=social)
+![Проблемы](https://img.shields.io/github/issues/Amrikhudo/my-biggest-project)
+![Покрытие кода](https://img.shields.io/badge/Покрытие%20кода-90%25-brightgreen)
+![Форки](https://img.shields.io/github/forks/Amrikhudo/my-biggest-project?style=social)
+
+
 # 1flipstore1 - Магазин скинов для Fortnite
 
 1flipstore1 - это специализированная онлайн-платформа, где геймеры могут безопасно и легко приобретать эксклюзивные скины персонажей для популярной игры Fortnite от Epic Games.
