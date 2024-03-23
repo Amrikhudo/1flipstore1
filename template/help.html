@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+
+    <title>{% block title %}ПОМОЩЬ{% endblock %}</title>
+</head>
+<body>
+  <style>
+    body {
+        background-color: #333;
+    }
+    
+</style>
+<div class="hamburger-menu">
+  <input id="menu__toggle" type="checkbox" />
+  <label class="menu__btn" for="menu__toggle">
+    <span></span>
+  </label>
+  <ul class="menu__box">
+    <div class="header__logo">1FLIPSTORE1</div>
+    <br>
+    <a class="menu__item" href="{{ url_for('index') }}">ГЛАВНАЯ</a>
+    <a class="menu__item" href="{{ url_for('help') }}">ПОМОЩЬ</a>
+    <a class="menu__item" href="https://vk.com/1flipstore1">НАША ГРУППА В ВК</a>
+    <a class="menu__item" href="{{ url_for('garantiya') }}">ГАРАНТИЯ</a>
+    <a class="menu__item" href="{{ url_for('geo') }}">МЕСТОПОЛОЖЕНИЕ</a>
+  </ul>
+</div>
+
+<br><br>
+<div class="user-info">
+    {% if user %}
+    <span class="username"><span class="username-first-letter">{{ user.username[0] }}</span>{{ user.username[1:] }}</span>
+    <br>
+    <a class="menu__log" href="{{ url_for('logout') }}">Выйти</a>
+    {% else %}
+    <a class="menu__log" href="{{ url_for('register') }}">Регистрация</a>
+    <br>
+    <a class="menu__log" href="{{ url_for('login') }}">Вход</a>
+    {% endif %}
+</div>
+
+<br><br>
+
+            <button class="nav-toggle" type="button">
+                <span class="nav-toggle__item">МЕНЮ</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+
+    <div class="container">
+        <div class="intro__inner">
+            <h2 class="intro__suptitle"></h2>
+        <h1 class="intro__title"></h1>
+        </div>
+    </div>
+
+
+
+<section class="section">
+    <div class="container">
+      <br>
+       <h1><font size="6" color="#0000ff" face="serif">ПОМОЩЬ:</font></h1>
+       <hr>
+       <p><big><center><font size="5" color="#fff" face="serif">По вопросам - обращайтесь к нашей поддержке в вк </font><big><a class="menu__item" href="https://vk.com/id765799153">ТЫК ДЛЯ БЫСТРОГО ПЕРЕХОДА</a></big></center></big></p>
+       <br>
+       <p><big><center><strong><font size="5" color="#fff" face="serif">ВАЖНО! ЗАПИСЫВАЙТЕ ВИДЕО БЕЗ СКЛЕЕК : ОТ НАЧАЛА ПОКУПКИ ДО ПРОЦЕССА АКТИВАЦИИ. ЕСЛИ КОД ОКАЖЕТСЯ НЕКОРРЕКТНЫМ - МЫ СДЕЛАЕМ ЗАМЕНУ. БЕЗ ВИДЕО, ЗАМЕНЫ - НЕ БУДЕТ.</font></strong></center></big></p>
+       <br>
+       <hr>
+       <p><font size="4" color="#fff" face="serif">График работы поддержки с 10:00 до 00:00 (по мск)</font></p>
+       <p><font size="4" color="#fff" face="serif">Активации выполняются с 11:00 до 23:00 (по мск)</font></p>
+       <p><font size="4" color="#fff" face="serif">Коды рассылаются 24/7</font></p>
+
+
+</body>
+</html>
