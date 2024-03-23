@@ -1,0 +1,453 @@
+body {
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+
+	font-size: 15px;
+	line-height: 1.6;
+	color: #333;
+}
+
+*, 
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+
+.user-info {
+	text-align: right;
+	padding: 100px 60px;
+}
+
+.menu__log {
+	margin:0 auto;
+	width:200px;
+	font-size:20px;
+	font-weight:bold;
+	text-align:center;
+	color:lightgray;
+}
+
+.username {
+	color: white;
+	font-size: 20px;
+	font-weight: 500;
+}
+
+.username-first-letter {
+	color: red;
+}
+
+/* Container*/
+.container {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+/*Intro*/
+.intro__inner {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	color: #808080;
+	
+	text-align: center;
+}
+
+.intro__title {
+	font-size: 150px;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-align: center;
+	line-height: 1;
+}
+
+.intro__suptitle{
+	margin-bottom: 20px;
+
+	font-family: 'Kaushan Script', cursive;
+	font-size: 75px;
+	color: #808080;
+	text-align: center;
+}
+
+
+/*Header*/
+.hamburger-menu {
+	width: 100%;
+	padding-top: 30px;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+}
+
+.hamburger-menu.fixed {
+	padding: 10px 0;
+
+	background-color: #d8e8f1;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+
+	transform: translate3d(0, 0, 0);
+}
+
+.hamburger-menu.active {
+	background-color: #d8e8f1;
+}
+
+.menu__btn {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header__logo {
+	padding: auto;
+	font-size: 20px;
+	font-weight: 500;
+	color: #0000ff;
+}
+/*Nav*/
+
+.menu__box {
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+
+.menu__item {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 10px;
+	position: relative;
+
+	color: #808080;
+	text-decoration: none;
+
+	transition: color 0.5s linear;
+}
+
+.menu__item:after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 3px;
+
+	background-color: #fff;
+	opacity: 0;
+
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1;
+
+	transition: opacity 0.2s linear;
+}
+
+.menu__item:hover {
+	color: #fff;
+}
+
+.menu__item:hover:after {
+	opacity: 1;
+}
+
+.nav-toggle {
+	width: 30px;
+	padding: 10px 0;
+	display: none;
+
+	font-size: 0;
+	color: transparent;
+
+	border: 0;
+	background: none;
+	cursor: pointer;
+
+	position: absolute;
+	top: 24px;
+	right: 24px;
+	z-index: 1;
+}
+
+.nav-toggle__item {
+	display: block;
+	width: 100%;
+	height: 3px;
+
+	background-color: #808080;
+
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+
+	transition: background .2s linear;
+}
+/*Section*/
+
+.section__text {
+	wight: 100%;
+	max-width: 950px;
+	margin: 0 auto 40px;
+	color: #FF0000;
+
+	text-align: center;
+}
+
+.section__text:after {
+	content: "";
+	display: block;
+	width: 60px;
+	height: 3px;
+	margin: 30px auto;
+
+	background-color: #808080;
+}
+
+
+/*IMG*/
+
+.about {
+	display: flex;
+	justify-content: space-between;
+}
+
+.about__items {
+	width: 60%;
+	position: relative;
+}
+
+.about__imgs img {
+	display: block;
+	max-width: 100%;
+	transition: opacity .3s linear;
+}
+
+.about__item {
+	width: 25%;
+	position: relative;
+
+	background-color: #95e1d3;
+}
+
+.about__item:hover .about__img {
+	transform: translate3d(-10px, -10px, 0);
+}
+
+.about__item:hover .about__img img {
+	opacity: .1;
+}
+
+.about__item:hover .about__text {
+	opacity: 1;
+}
+
+.about__img {
+	background: linear-gradient(to bottom,
+	#f38181, #fce38a);
+
+	transition: transform .2s linear;
+}
+
+.about__img img {
+	display: block;
+	max-width: 100%;
+	transition: opacity .3s linear;
+
+}
+
+.about__text {
+	width: 100%;
+
+	font-size: 25px;
+	color: #008000;
+	text-transform: uppercase;
+	font-weight: 700;
+	text-align: center;
+	opacity: 0;
+
+	position: absolute;
+	top: 20%;
+	left: 0;
+	z-index: 2;
+	transform: translate3d(0, -50, 0);
+
+	transition: opacity .2s linear;
+}
+
+.butter__sait {
+	text-align: center;
+}
+
+
+
+.text__block {
+	padding: 30px;
+	margin: top;
+	color: #fff;
+}
+
+
+
+@media (max-width: 1230px) {
+
+	/*Intro*/
+	.intro__suptitle {
+		font-size: 52px;
+	}
+
+	.intro__title {
+		font-size: 120px;
+
+	}
+
+}
+
+@media (max-width: 990px) {
+
+	/*Intro*/
+	.intro__suptitle {
+		font-size: 32px;
+	}
+
+	.intro__title {
+		font-size: 80px;
+	}
+
+}
+
+@media (max-width: 770px) {
+/* скрываем чекбокс */
+#menu__toggle {
+  opacity: 0;
+}
+/* стилизуем кнопку */
+.menu__btn {
+  display: flex; /* используем flex для центрирования содержимого */
+  align-items: center;  /* центрируем содержимое кнопки */
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  z-index: 1;
+}
+/* добавляем "гамбургер" */
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+}
+.menu__btn > span::before {
+  content: '';
+  top: -8px;
+}
+.menu__btn > span::after {
+  content: '';
+  top: 8px;
+}
+
+/* контейнер меню */
+.menu__box {
+  display: block;
+  position: fixed;
+  visibility: hidden;
+  top: 0;
+  left: -100%;
+  width: 300px;
+  height: 100%;
+  margin: 0;
+  padding: 80px 0;
+  list-style: none;
+  text-align: center;
+  background-color: #333;
+  box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+}
+/* элементы меню */
+.menu__item {
+  display: block;
+  padding: 12px 24px;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.menu__item:hover {
+  background-color: #CFD8DC;
+}
+
+#menu__toggle:checked ~ .menu__btn > span {
+  transform: rotate(45deg);
+}
+#menu__toggle:checked ~ .menu__btn > span::before {
+  top: 0;
+  transform: rotate(0);
+}
+#menu__toggle:checked ~ .menu__btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+#menu__toggle:checked ~ .menu__box {
+  visibility: visible;
+  left: 0;
+}
+
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  transition-duration: .25s;
+}
+.menu__box {
+  transition-duration: .25s;
+}
+.menu__item {
+  transition-duration: .25s;
+}
+
+
+
+@media (max-width: 575px) {
+
+	/*Intro*/
+	.intro__suptitle {
+		font-size: 22px;
+	}
+
+	.intro__title {
+		font-size: 40px;
+	}
+}
+
+.text {
+	text-align: center;
+}
+
+.text__buy {
+	text-align: right;
+}
+
+.h11 {
+	background: #D9FFAD; /* Цвет фона под заголовком */
+    color: green; /* Цвет текста */
+    padding: 2px; /* Поля вокруг текста */
+}
