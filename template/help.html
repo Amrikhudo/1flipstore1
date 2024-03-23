@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.min.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
 
     <title>{% block title %}ПОМОЩЬ{% endblock %}</title>
@@ -15,6 +16,30 @@
     }
     
 </style>
+
+<div class="preloader">
+    <div class="preloader__row">
+        <div class="preloader__item"></div>
+        <div class="preloader__item"></div>
+    </div>
+</div>
+
+
+<script>
+    window.onload = function () {
+      document.body.classList.add("loaded");
+    };
+   </script>
+  <script>
+    window.onload = function () {
+      document.body.classList.add("loaded_hiding");
+      window.setTimeout(function () {
+        document.body.classList.add("loaded");
+        document.body.classList.remove("loaded_hiding");
+      }, 500);
+    };
+  </script>
+  
 <div class="hamburger-menu">
   <input id="menu__toggle" type="checkbox" />
   <label class="menu__btn" for="menu__toggle">
