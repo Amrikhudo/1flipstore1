@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.min.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/about/home.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    <title>{% block title %}ГЛАВНАЯ{% endblock %}</title>
 </head>
 <body>
@@ -59,7 +61,6 @@
     <br>
         <a class="menu__item" href="{{ url_for('index') }}">ГЛАВНАЯ</a>
         <a class="menu__item" href="{{ url_for('help') }}">ПОМОЩЬ</a>
-        <a class="menu__item" href="https://vk.com/1flipstore1">НАША ГРУППА В ВК</a>
         <a class="menu__item" href="{{ url_for('garantiya') }}">ГАРАНТИЯ</a>
         <a class="menu__item" href="{{ url_for('geo') }}">МЕСТОПОЛОЖЕНИЕ</a>
   </ul>
@@ -67,13 +68,15 @@
 <br><br>
 <div class="user-info">
     {% if user %}
-    <span class="username"><span class="username-first-letter">{{ user.username[0] }}</span>{{ user.username[1:] }}</span>
+    <span class="username"><span class="username-first-letter">{{ user.username[0] }}</span>{{ user.username[1:] }}   <big><big><big><i class="bi bi-person-fill"></i></big></big></big></span>
     <br>
     <a class="menu__log" href="{{ url_for('logout') }}">Выйти</a>
+    <br>
+    <a class="menu__log" href="{{ url_for('cart') }}">Корзина <big><big><big><i class="bi bi-cart"></i></big></big></big></a>
     {% else %}
     <a class="menu__log" href="{{ url_for('register') }}">Регистрация</a>
     <br>
-    <a class="menu__log" href="{{ url_for('login') }}">Вход</a>
+    <a class="menu__log" href="{{ url_for('login') }}">Войти</a>
     {% endif %}
 </div>
 <br><br><br>
@@ -100,8 +103,7 @@
 
         <div class="section__header">
             <div class="section__text">
-                <h1><big>ПОСЛЕ ПОКУПКИ НАПИШИТЕ <a href="https://vk.com/flpstar">АКТИВАТОРУ</a> В ВК, ЧТОБЫ ОН УСПЕШНО АКТИВИРОВАЛ ВАШ ЗАКАЗ.</big></h1>
-                <br><br>
+
                 <h1><font size="6" color="#0000ff" face="serif">СПИСОК ВСЕХ ТОВАРОВ</font></h1>
             </div>
         </div>
@@ -110,7 +112,7 @@
         <div class="about">
             <div class="about__item">
                 <div class="about__img">
-                    <a href="{{ url_for('index3') }}"><img width="300" src="{{ url_for('static', filename='img/about/1.jpg') }}" alt="">
+                    <a href="{{ url_for('index3') }}"><img width="300" src="{{ url_for('static', filename='img/about/1.jpg') }}" alt=""></a>
                 </div>
                 <div class="about__text">КУПИТЬ</div>
                 <h3>ЛЕГЕНДЫ АНИМЕ</h3>
@@ -119,7 +121,7 @@
             </div>
             <div class="about__item">
                 <div class="about__img">
-                    <a href="{{ url_for('index4') }}"><img width="300" src="{{ url_for('static', filename='img/about/2.jpg') }}" alt="">
+                    <a href="{{ url_for('index4') }}"><img width="300" src="{{ url_for('static', filename='img/about/2.jpg') }}" alt=""></a>
                 </div>
                 <div class="about__text">КУПИТЬ</div>
                 <h3>КРЕСТ-НАКРЕСТ</h3>
@@ -128,7 +130,7 @@
             </div>
             <div class="about__item">
                 <div class="about__img">
-                    <a href="{{ url_for('index5') }}"><img width="300" src="{{ url_for('static', filename='img/about/3.jpg') }}" alt="">
+                    <a href="{{ url_for('index5') }}"><img width="300" src="{{ url_for('static', filename='img/about/3.jpg') }}" alt=""></a>
                 </div>
                 <div class="about__text">КУПИТЬ</div>
                 <h3>ПРИЗРАЧНЫЕ ЛЕГЕНДЫ</h3>
@@ -140,7 +142,7 @@
         <div class="about">
             <div class="about__item">
                 <div class="about__img">
-                    <a href="{{ url_for('index6') }}"><img width="300" src="{{ url_for('static', filename='img/about/4.jpg') }}" alt="">
+                    <a href="{{ url_for('index6') }}"><img width="300" src="{{ url_for('static', filename='img/about/4.jpg') }}" alt=""></a>
                 </div>
                 <div class="about__text">КУПИТЬ</div>
                 <h3>ТЕХНОЛИГА</h3>
@@ -149,7 +151,7 @@
             </div>
             <div class="about__item">
                 <div class="about__img">
-                    <a href="{{ url_for('index7') }}"><img width="300" src="{{ url_for('static', filename='img/about/5.jpg') }}" alt="">
+                    <a href="{{ url_for('index7') }}"><img width="300" src="{{ url_for('static', filename='img/about/5.jpg') }}" alt=""></a>
                 </div>
                 <div class="about__text">КУПИТЬ</div>
                 <h3>ВЕЧНАЯ МЕРЗЛОТА</h3>
@@ -158,7 +160,7 @@
             </div>
             <div class="about__item">
                 <div class="about__img">
-                    <a href="{{ url_for('index8') }}"><img width="300" src="{{ url_for('static', filename='img/about/6.jpg') }}" alt="">
+                    <a href="{{ url_for('index8') }}"><img width="300" src="{{ url_for('static', filename='img/about/6.jpg') }}" alt=""></a>
                 </div>
                 <div class="about__text">КУПИТЬ</div>
                 <h3>ПОДПИСКА FORNITE CREW</h3>
@@ -170,7 +172,7 @@
         <div class="about">
             <div class="about__item">
                 <div class="about__img">
-                    <a href="{{ url_for('index9') }}"><img width="300" src="{{ url_for('static', filename='img/about/7.jpg') }}" alt="">
+                    <a href="{{ url_for('index9') }}"><img width="300" src="{{ url_for('static', filename='img/about/7.jpg') }}" alt=""></a>
                 </div>
                 <div class="about__text">КУПИТЬ</div>
                 <h3>ЗОЛОТЫЕ РУКИ</h3>
@@ -179,7 +181,7 @@
             </div>
             <div class="about__item">
                 <div class="about__img">
-                    <a href="{{ url_for('index10') }}"><img width="300" src="{{ url_for('static', filename='img/about/8.jpg') }}" alt="">
+                    <a href="{{ url_for('index10') }}"><img width="300" src="{{ url_for('static', filename='img/about/8.jpg') }}" alt=""></a>
                 </div>
                 <div class="about__text">КУПИТЬ</div>
                 <h3>ЛЕДЯНЫЕ ЛЕГЕНДЫ</h3>
@@ -188,7 +190,7 @@
             </div>
             <div class="about__item">
                 <div class="about__img">
-                    <a href="{{ url_for('index11') }}"><img width="300" src="{{ url_for('static', filename='img/about/9.jpg') }}" alt="">
+                    <a href="{{ url_for('index11') }}"><img width="300" src="{{ url_for('static', filename='img/about/9.jpg') }}" alt=""></a>
                 </div>
                 <div class="about__text">КУПИТЬ</div>
                 <h3>ПОТУСТОРОНИЕ ЛЕГЕНДЫ</h3>
@@ -196,30 +198,38 @@
                 <s>800.99 ₽</s>
             </div>
         </div>
-            <br><br><br><br><br>
-        <div class="about">
-            <div class="about__item">
-                <div class="about__img">
-                    <a href="{{ url_for('index12') }}"><img width="300" src="{{ url_for('static', filename='img/about/13.jpg') }}" alt="">
-                </div>
-                <div class="about__text">КУПИТЬ</div>
-                <h3>ЗИМНИЕ ЛЕГЕНДЫ</h3>
-                <h2>699.99 ₽</h2>
-                <s>900.99 ₽</s>
-            </div>
 </section>
-<section>
-    <hr color="gray">
-    <div class="butter__sait">
-        <a class="menu__item" href="https://vk.com/id757615681">АДМИНИСТРАТОР</a>
-        <br>
-        <a class="menu__item" href="https://vk.com/bugdiev">СОЗДАТЕЛЬ САЙТА(МОДЕРАТОР)</a>
-        <br>
-        <a class="menu__item" href="https://vk.com/flpstar">АКТИВАТОР</a>
-    </div>
-    <br><br>
-</section>
-
-
+<br><br><br>
+<footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__col">
+          <h3 class="footer__col-title">Навигация</h3>
+          <ul class="footer__col-list">
+            <li><a href="{{ url_for('index') }}">Главная</a></li>
+            <li><a href="{{ url_for('help') }}">Помощь</a></li>
+            <li><a href="{{ url_for('garantiya') }}">Гарантия</a></li>
+            <li><a href="{{ url_for('geo') }}">Местоположение</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__col-title">Контакты</h3>
+          <ul class="footer__col-list footer__col-list--contacts">
+            <li><a href="mailto:example@mail.com">example@mail.com</a></li>
+            <li><a href="tel:+78005553535">+7 (800) 555-35-35</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__col-title">Социальные сети</h3>
+          <ul class="footer__col-list footer__col-list--socials">
+            <li><a href="https://vk.com/1flipstore1" target="_blank"><i class="fab fa-vk"></i></a></li>
+            <li><a href="#" target="_blank"><i class="bi bi-telegram"></i></a></li>
+            <li><a href="#" target="_blank"><i class="bi bi-whatsapp"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__copy">
+        <p>&copy; 1FLIPSTORE1, 2024. Все права защищены.</p>
+  </footer>
 </body>
 </html>
