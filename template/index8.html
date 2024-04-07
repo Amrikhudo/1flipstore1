@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.min.css') }}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.min.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <title>{% block title %}FORTNITE CREW{% endblock %}</title>
 </head>
 <body>
@@ -92,94 +93,116 @@
 
 <br><br><br>
 
-<div class="about__items">
-    <div class="about__imgs">
-            <img src="{{ url_for('static', filename='img/about/6.jpg') }}" alt="Солнечное затмение" align="left" width="300"><font size="8" color="#4682B4" face="serif"><center><b>699.99 ₽</b></center></font>
-            <form method="POST" action="{{ url_for('add_to_cart', currency='Подписка fornite crew') }}">
-                <button class="btn-add-to-cart" type="submit">
-                    Добавить в корзину  <i class="bi bi-cart"></i>
-                  </button>
-            </form>
-             <h1><font size="5" color="#fff" face="serif"><center>Лучшая цена  <i class="bi bi-check"></i></center></font></h1>
-             <p><center><big><font size="2" color="#808080" face="serif">ДАЕМ ГАРАНТИЮ САМЫЙ НИЗКОЙ ЦЕНЫ ВО ВСЕМ РУНЕТЕ!</font></big></center></p>
-             <h1><font size="5" color="#fff" face="serif"><center>Быстрая доставка  <i class="bi bi-truck"></i></center></font></h1>
-             <p><center><big><font size="2" color="#808080" face="serif">ПОСЛЕ ПОКУПКИ НАПИШИТЕ В ПОДДЕРЖКУ, ДАННЫЕ ПРИДУТ ВАМ ЧЕРЕЗ НЕСКОЛЬКО МИНУТ ПОСЛЕ ПОКУПКИ!</font></big></center></p>
+<div class="row">
+  <div class="col-md-6">
+      <div class="about__items">
+          <div class="about__imgs">
+              <img src="{{ url_for('static', filename='img/about/6.jpg') }}" alt="Солнечное затмение" class="img-fluid" align="left" width="500">
+          </div>
+      </div>
+  </div>
+ 
+  
+  <div class="col-md-6 ">
+      <h1 class="text-primary"><font size="8" face="serif"><b>699.99 ₽</b></font></h1>
+      <form method="POST" action="{{ url_for('add_to_cart', currency='Подписка fornite crew') }}">
+          <button class="btn btn-primary btn-lg btn-block" type="submit">
+                  Добавить в корзину<i class="bi bi-cart"></i>
+          </button>
+      </form>
+      <br>
+        <h1 class="text-white"><font size="5" face="serif">Лучшая цена  <i class="bi bi-check"></i></font></h1>
+        <p><big><font size="2" color="#808080" face="serif">ДАЕМ ГАРАНТИЮ САМОЙ НИЗКОЙ ЦЕНЫ ВО ВСЕМ РУНЕТЕ!</font></big></p>
+        <h1 class="text-white"><font size="5" face="serif">Быстрая доставка  <i class="bi bi-truck"></i></font></h1>
+        <p><big><font size="2" color="#808080" face="serif">ПОСЛЕ ПОКУПКИ НАПИШИТЕ В ПОДДЕРЖКУ, ДАННЫЕ ПРИДУТ ВАМ ЧЕРЕЗ НЕСКОЛЬКО МИНУТ ПОСЛЕ ПОКУПКИ!</font></big></p>
     </div>
 </div>
+
 <div class="text__block">
-    <h1><big><b>ОПИСАНИЕ</b></big></h1>
-    <p><big><b>Покупая данный товар вы получаете подписку фортнайт отряды </b></big></p>
+    <h1 class="text-white"><big><b>ОПИСАНИЕ</b></big></h1>
+    <p class="text-white"><big><b>Покупая данный товар вы получаете подписку фортнайт отряды </b></big></p>
 </div>
 
 
 {% if user %}
-  <h2><font size="6" color="#fff" face="serif">Оставить отзыв</font></h2>
-  <form method="POST" action="{{ url_for('add_review', product='Вечная мерзлота') }}">
-    <div>
-      <label for="rating"><font size="4" color="#fff" face="serif">Рейтинг:</font></label>
-      <select id="rating" name="rating">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-    </div>
-    <div>
-      <br>
-      <label for="comment"><font size="4" color="#fff" face="serif">Комментарий:</font></label>
-      <textarea id="comment" name="comment"></textarea>
-    </div>
+<h2 class="text-white">Оставить отзыв</h2>
+<form method="POST" action="{{ url_for('add_review', product='Подписка fornite crew') }}">
+  <div class="form-group">
+    <label for="rating" class="text-white">Рейтинг:</label>
+    <select class="form-control" id="rating" name="rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </div>
+  <div class="form-group">
     <br>
-    <button type="submit" class="button">Отправить отзыв</button>
-  </form>
+    <label for="comment" class="text-white">Комментарий:</label>
+    <textarea class="form-control" id="comment" name="comment"></textarea>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Отправить отзыв</button>
+</form>
 
-  <h2><font size="6" color="#fff" face="serif">Отзывы</font></h2>
-  {% for review in reviews %}
-    <div class="review">
-      <div class="review-header">
-        <span class="usernamee">{{ review.user.username }}</span>
-        <span class="rating">Рейтинг: {{ review.rating }}</span>
-      </div>
-      <div class="review-comment">{{ review.comment }}</div>
-      <div class="review-date">{{ review.created_at.strftime('%Y-%m-%d %H:%M') }}</div>
-    </div>
-  {% endfor %}
+<h2 class="text-white">Отзывы:</h2>
+<h2 class="text-white">Общий рейтинг: {{ "%.1f"|format(average_rating) }}</h2>
+
+{% for review in reviews %}
+<div class="card mb-3">
+<div class="card-body">
+  <div class="d-flex justify-content-between align-items-center">
+    <span class="text-black">{{ review.user.username }}</span>
+    <span class="text-black">Рейтинг: {{ review.rating }}</span>
+    {% if user and review.user_id == user.id %}
+    <form method="POST" action="{{ url_for('delete_review', review_id=review.id) }}">
+      <button type="submit" class="btn btn-danger btn-sm">Удалить отзыв</button>
+    </form>
+    {% endif %}
+  </div>
+  <p class="card-text text-black">{{ review.comment }}</p>
+  <p class="card-text text-muted">{{ review.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+</div>
+</div>
+{% endfor %}
 {% else %}
-<p style="color: aliceblue;">Пожалуйста, <a href="{{ url_for('login') }}">войдите</a> или <a href="{{ url_for('register') }}">зарегистрируйтесь</a>, чтобы оставить отзыв.</p>
+<p class="text-white">Пожалуйста, <a href="{{ url_for('login') }}" class="text-white">войдите</a> или <a href="{{ url_for('register') }}" class="text-white">зарегистрируйтесь</a>, чтобы оставить отзыв.</p>
 {% endif %}
 
-<footer class="footer">
-    <div class="container">
-      <div class="footer__inner">
-        <div class="footer__col">
-          <h3 class="footer__col-title">Навигация</h3>
-          <ul class="footer__col-list">
-            <li><a href="{{ url_for('index') }}">Главная</a></li>
-            <li><a href="{{ url_for('help') }}">Помощь</a></li>
-            <li><a href="{{ url_for('garantiya') }}">Гарантия</a></li>
-            <li><a href="{{ url_for('geo') }}">Местоположение</a></li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h3 class="footer__col-title">Контакты</h3>
-          <ul class="footer__col-list footer__col-list--contacts">
-            <li><a href="mailto:example@mail.com">example@mail.com</a></li>
-            <li><a href="tel:+78005553535">+7 (800) 555-35-35</a></li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h3 class="footer__col-title">Социальные сети</h3>
-          <ul class="footer__col-list footer__col-list--socials">
-            <li><a href="https://vk.com/1flipstore1" target="_blank"><i class="fab fa-vk"></i></a></li>
-            <li><a href="#" target="_blank"><i class="bi bi-telegram"></i></a></li>
-            <li><a href="#" target="_blank"><i class="bi bi-whatsapp"></i></a></li>
-          </ul>
-        </div>
+<footer class="footer bg-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h3 class="footer__col-title text-white">Навигация</h3>
+        <ul class="footer__col-list list-unstyled">
+          <li><a href="{{ url_for('index') }}" class="text-white">Главная</a></li>
+          <li><a href="{{ url_for('help') }}" class="text-white">Помощь</a></li>
+          <li><a href="{{ url_for('garantiya') }}" class="text-white">Гарантия</a></li>
+        </ul>
       </div>
-      <div class="footer__copy">
-        <p>&copy; 1FLIPSTORE1, 2024. Все права защищены.</p>
-  </footer>
+      <div class="col-md-4">
+        <h3 class="footer__col-title text-white">Контакты</h3>
+        <ul class="footer__col-list footer__col-list--contacts list-unstyled">
+          <li><a href="mailto:example@mail.com" class="text-white">example@mail.com</a></li>
+          <li><a href="tel:+78005553535" class="text-white">+7 (800) 555-35-35</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h3 class="footer__col-title text-white">Социальные сети</h3>
+        <ul class="footer__col-list footer__col-list--socials list-unstyled">
+          <li><a href="https://vk.com/1flipstore1" target="_blank" class="text-white"><i class="fab fa-vk"></i></a></li>
+          <li><a href="#" target="_blank" class="text-white"><i class="bi bi-telegram"></i></a></li>
+          <li><a href="#" target="_blank" class="text-white"><i class="bi bi-whatsapp"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__copy text-center text-white">
+      <p>&copy; 1FLIPSTORE1, 2024. Все права защищены.</p>
+    </div>
+  </div>
+</footer>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
