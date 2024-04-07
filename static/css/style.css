@@ -17,6 +17,8 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 
+
+
 /*User*/
 
 .user-info {
@@ -64,7 +66,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 
 /*OTZ*/
-/* Стили для отзывов */
 .review {
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -233,8 +234,8 @@ select#rating {
 .header__logo {
 	padding: auto;
 	font-size: 20px;
-	font-weight: 500;
-	color: #0000ff;
+	font-weight: 700;
+	color: #007bff;
 }
 /*Nav*/
 
@@ -322,7 +323,7 @@ select#rating {
 
 /*Footer*/
 .footer {
-	background-color: #212121; /* Темно-серый цвет фона */
+	background-color: #212121;
 	color: #fff;
 	padding: 40px 0;
   }
@@ -414,6 +415,10 @@ select#rating {
 	.footer__inner {
 	  flex-wrap: wrap;
 	}
+	.text_pr {
+		font-size: 12px;
+	}
+
   
 	.footer__col {
 	  flex: 0 0 50%;
@@ -482,6 +487,82 @@ select#rating {
 }
 
 
+/*Help*/
+
+.help-icon {
+	position: fixed;
+	bottom: 20px;
+	left: 20px;
+	font-size: 24px;
+	color: #0077ff;
+	cursor: pointer;
+	z-index: 9999;
+ }
+
+
+.help-popup {
+	position: fixed;
+	bottom: 60px;
+	left: 20px;
+	width: 300px;
+	max-height: 400px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	overflow-y: auto;
+	z-index: 9999;
+	display: none;
+ }
+
+.help-popup-header {
+    background-color: #0077ff;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.help-popup-close {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.help-message {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.help-message-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.help-message-text {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.help-message.user .help-message-text {
+    background-color: #0077ff;
+    color: #fff;
+}
+
+.help-message.bot .help-message-avatar {
+    background-color: #0077ff;
+}
+
 /*IMG*/
 
 .about {
@@ -489,10 +570,7 @@ select#rating {
 	justify-content: space-between;
 }
 
-.about__items {
-	width: 60%;
-	position: relative;
-}
+
 
 .about__imgs img {
 	display: block;
@@ -533,10 +611,11 @@ select#rating {
 
 }
 
+
 .about__text {
 	width: 100%;
 
-	font-size: 25px;
+	font-size: 15px;
 	color: #008000;
 	text-transform: uppercase;
 	font-weight: 700;
@@ -544,7 +623,7 @@ select#rating {
 	opacity: 0;
 
 	position: absolute;
-	top: 20%;
+	top: 15%;
 	left: 0;
 	z-index: 2;
 	transform: translate3d(0, -50, 0);
@@ -565,6 +644,11 @@ select#rating {
 }
 
 
+@media (min-width: 768px) {
+	.btn-primary {
+	  margin-right: -110px; /* Перемещение кнопки вправо */
+	}
+  }
 
 @media (max-width: 1230px) {
 
@@ -592,6 +676,11 @@ select#rating {
 	}
 
 }
+
+#menu__toggle {
+	display: none;
+  }
+  
 
 @media (max-width: 770px) {
 #menu__toggle {
@@ -643,6 +732,8 @@ select#rating {
   background-color: #333;
   box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
 }
+
+
 /* элементы меню */
 .menu__item {
   display: block;
@@ -708,7 +799,7 @@ select#rating {
 }
 
 .h11 {
-	background: #D9FFAD; /* Цвет фона под заголовком */
-    color: green; /* Цвет текста */
-    padding: 2px; /* Поля вокруг текста */
+	background: #D9FFAD;
+    color: green;
+    padding: 2px;
 }
