@@ -1,4 +1,4 @@
-![Версия](https://img.shields.io/badge/Версия-1.0.0-blue)
+![Версия](https://img.shields.io/badge/Версия-1.1.0-green)
 ![Статус проекта](https://img.shields.io/badge/Статус-В%20разработке-yellow)
 ![Звезды](https://img.shields.io/github/stars/Amrikhudo/my-biggest-project?style=social)
 ![Проблемы](https://img.shields.io/github/issues/Amrikhudo/my-biggest-project)
