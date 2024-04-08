@@ -231,11 +231,13 @@ select#rating {
 	align-items: center;
 }
 
+
 .header__logo {
 	padding: auto;
 	font-size: 20px;
 	font-weight: 700;
 	color: #007bff;
+	text-decoration: none;
 }
 /*Nav*/
 
@@ -644,11 +646,48 @@ select#rating {
 }
 
 
+/* Стили для хедера на компьютерах */
 @media (min-width: 768px) {
-	.btn-primary {
-	  margin-right: -110px; /* Перемещение кнопки вправо */
-	}
-  }
+    .header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 0;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar-brand {
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .navbar-nav {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-item {
+        margin-left: 20px;
+    }
+
+    .nav-link {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+        color: #ccc;
+    }
+}
 
 @media (max-width: 1230px) {
 
