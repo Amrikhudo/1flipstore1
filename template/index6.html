@@ -10,7 +10,7 @@
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.min.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-    <title>{% block title %}ВЕЧНАЯ МЕРЗЛОТА{% endblock %}</title>
+    <title>{% block title %}ТЕХНОЛИГА{% endblock %}</title>
 </head>
 <body>
     <div class="preloader">
@@ -44,7 +44,7 @@
     <a class="header__logo" href="{{ url_for('index') }}">1FLIPSTORE1</a>
     <br><br>
     <a class="menu__item" href="{{ url_for('index') }}">ГЛАВНАЯ</a>
-    <a class="menu__item" href="{{ url_for('help') }}">ПОМОЩЬ</a>>
+    <a class="menu__item" href="{{ url_for('help') }}">ПОМОЩЬ</a>
     <a class="menu__item" href="{{ url_for('garantiya') }}">ГАРАНТИЯ</a>
   </ul>
 </div>
@@ -89,23 +89,23 @@
     <div class="container">
         <br>
 
-<h1><font size="7" color="#fff" face="serif"><center>НАБОР "ВЕЧНАЯ МЕРЗЛОТА"</center></font></h1>
+<h1><font size="7" color="#fff" face="serif"><center>НАБОР "ТЕХНОЛИГА"</center></font></h1>
 
 <br><br><br>
 
-<div class="row">
+<<div class="row">
   <div class="col-md-6">
       <div class="about__items">
           <div class="about__imgs">
-              <img src="{{ url_for('static', filename='img/about/5.jpg') }}" alt="Солнечное затмение" class="img-fluid" align="left" width="500">
+              <img src="{{ url_for('static', filename='img/about/4.jpg') }}" alt="Солнечное затмение" class="img-fluid" align="left" width="500">
           </div>
       </div>
   </div>
  
   
   <div class="col-md-6 ">
-      <h1 class="text-primary"><font size="8" face="serif"><b>649.99 ₽</b></font></h1>
-      <form method="POST" action="{{ url_for('add_to_cart', currency='Вечная мерзлота') }}">
+      <h1 class="text-primary"><font size="8" face="serif"><b>499.99 ₽</b></font></h1>
+      <form method="POST" action="{{ url_for('add_to_cart', currency='Технолига') }}">
           <button class="btn btn-primary btn-lg btn-block" type="submit">
                   Добавить в корзину<i class="bi bi-cart"></i>
           </button>
@@ -119,24 +119,35 @@
 </div>
 <div class="text__block">
     <h1 class="text-white"><big><b>ОПИСАНИЕ</b></big></h1>
-    <p class="text-white"><big><b>Вступите в «Королевскую битву» с набором «Вечная мерзлота»!</b></big></p>
+    <p class="text-white"><big><b>Высокотехнологичное оружие с неоновой подсветкой и ультрасовременные защитные костюмы…
+Будущее уже наступило. Шагайте в ногу со временем с набором «Технолига».</b></big></p>
 
-    <p><big>Вечная Мерзлота - содержимое :
+    <p><big>Технолига - содержимое :
         <br>
-    экипировка <b>Полярника</b>
+    экипировка <b>Нейро-Рыси</b>
     <br>
-    украшение на спину <b>«Точка замерзания»</b>
+    украшение на спину <b>«Нейрокогти»</b>
     <br>
-    кирка <b>«Морозилка»</b>
+    кирка <b>«Нейрокогти»</b>
     <br>
-    экипировка <b>«Холодный фронт»</b>
+    экипировка <b>Б4Н4НА</b>
+    <br>
+    украшение на спину <b>«Разрезатель кожуры»</b>
+    <br>
+    кирка <b>«Разрезатель кожуры»</b>
+    <br>
+    экипировка <b>Техно-Восьмого</b>
+    <br>
+    украшение на спину <b>«Технопластина Восьмого»</b>
+    <br>
+    кирка <b>«Счастливые лезвия»</b>
     </big></p>
 
 </div>
 
 {% if user %}
 <h2 class="text-white">Оставить отзыв</h2>
-<form method="POST" action="{{ url_for('add_review', product='Вечная мерзлота') }}" enctype="multipart/form-data">
+<form method="POST" action="{{ url_for('add_review', product='Технолига') }}" enctype="multipart/form-data">
   <div class="form-group">
     <label for="rating" class="text-white">Рейтинг:</label>
     <select class="form-control" id="rating" name="rating">
