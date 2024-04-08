@@ -41,8 +41,8 @@
     <span></span>
   </label>
   <ul class="menu__box">
-    <div class="header__logo">1FLIPSTORE1</div>
-    <br>
+    <a class="header__logo" href="{{ url_for('index') }}">1FLIPSTORE1</a>
+    <br><br>
     <a class="menu__item" href="{{ url_for('index') }}">ГЛАВНАЯ</a>
     <a class="menu__item" href="{{ url_for('help') }}">ПОМОЩЬ</a>
     <a class="menu__item" href="{{ url_for('garantiya') }}">ГАРАНТИЯ</a>
@@ -143,7 +143,7 @@
 
 {% if user %}
 <h2 class="text-white">Оставить отзыв</h2>
-<form method="POST" action="{{ url_for('add_review', product='Крест-накрест') }}">
+<form method="POST" action="{{ url_for('add_review', product='Крест-накрест') }}"  enctype="multipart/form-data">
   <div class="form-group">
     <label for="rating" class="text-white">Рейтинг:</label>
     <select class="form-control" id="rating" name="rating">
@@ -159,6 +159,11 @@
     <label for="comment" class="text-white">Комментарий:</label>
     <textarea class="form-control" id="comment" name="comment"></textarea>
   </div>
+  <div class="form-group">
+    <br>
+    <label for="images" class="text-white">Загрузить изображения:</label>
+    <input type="file" class="form-control-file" id="images" name="images" multiple>
+  </div>
   <br>
   <button type="submit" class="btn btn-primary">Отправить отзыв</button>
 </form>
@@ -167,21 +172,25 @@
 <h2 class="text-white">Общий рейтинг: {{ "%.1f"|format(average_rating) }}</h2>
 
 {% for review in reviews %}
-<div class="card mb-3">
-<div class="card-body">
-  <div class="d-flex justify-content-between align-items-center">
-    <span class="text-black">{{ review.user.username }}</span>
-    <span class="text-black">Рейтинг: {{ review.rating }}</span>
-    {% if user and review.user_id == user.id %}
-    <form method="POST" action="{{ url_for('delete_review', review_id=review.id) }}">
-      <button type="submit" class="btn btn-danger btn-sm">Удалить отзыв</button>
-    </form>
-    {% endif %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <span class="text-black"><b><big>{{ review.user.username }}</big></b></span>
+        <span class="text-black">Рейтинг: {{ review.rating }}</span>
+        {% if user and review.user_id == user.id %}
+          <form method="POST" action="{{ url_for('delete_review', review_id=review.id) }}">
+            <button type="submit" class="btn btn-danger btn-sm">Удалить отзыв</button>
+          </form>
+        {% endif %}
+      </div>
+      <p class="card-text text-black">{{ review.comment }}</p>
+      {% for image in review.images %}
+        <img src="{{ url_for('static', filename='uploads/' + image.filename) }}" width="200" alt="{{ image.filename }}">
+      {% endfor %}
+      <br><br>
+      <p class="card-text text-muted">{{ review.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+    </div>
   </div>
-  <p class="card-text text-black">{{ review.comment }}</p>
-  <p class="card-text text-muted">{{ review.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
-</div>
-</div>
 {% endfor %}
 {% else %}
 <p class="text-white">Пожалуйста, <a href="{{ url_for('login') }}" class="text-white">войдите</a> или <a href="{{ url_for('register') }}" class="text-white">зарегистрируйтесь</a>, чтобы оставить отзыв.</p>
@@ -220,6 +229,7 @@
   </div>
 </footer>
 
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
