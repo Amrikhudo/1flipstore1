@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-  <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.min.css') }}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-    <title>{% block title %}ПОТУСТОРОНИЕ ЛЕГЕНДЫ{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <title>{% block title %}ЛЕГЕНДЫ АНИМЕ{% endblock %}</title>
 </head>
 <body>
     <div class="preloader">
@@ -34,7 +34,6 @@
             document.body.classList.remove("loaded_hiding");
           }, 500);
         };
-
       </script>
 <div class="hamburger-menu">
   <input id="menu__toggle" type="checkbox" />
@@ -90,90 +89,94 @@
     <div class="container">
         <br>
 
-<h1><font size="7" color="#fff" face="serif"><center>НАБОР "ПОТУСТОРОНИЕ ЛЕГЕНДЫ"</center></font></h1>
+<h1 class="text-center text-white"><font size="7" face="serif">НАБОР "ЛЕГЕНДЫ АНИМЕ"</font></h1>
 
 <br><br><br>
 
 <div class="row">
-  <div class="col-md-6">
-      <div class="about__items">
-          <div class="about__imgs">
-              <img src="{{ url_for('static', filename='img/about/9.jpg') }}" alt="Солнечное затмение" class="img-fluid" align="left" width="500">
-          </div>
-      </div>
-  </div>
- 
-  
-  <div class="col-md-6 ">
-      <h1 class="text-primary"><font size="8" face="serif"><b>599.99 ₽</b></font></h1>
-      <form method="POST" action="{{ url_for('add_to_cart', currency='Потустороние легенды') }}">
-          <button class="btn btn-primary btn-lg btn-block" type="submit">
-                  Добавить в корзину<i class="bi bi-cart"></i>
-          </button>
-      </form>
-      <br>
-        <h1 class="text-white"><font size="5" face="serif">Лучшая цена  <i class="bi bi-check"></i></font></h1>
-        <p><big><font size="2" color="#808080" face="serif">ДАЕМ ГАРАНТИЮ САМОЙ НИЗКОЙ ЦЕНЫ ВО ВСЕМ РУНЕТЕ!</font></big></p>
-        <h1 class="text-white"><font size="5" face="serif">Быстрая доставка  <i class="bi bi-truck"></i></font></h1>
-        <p><big><font size="2" color="#808080" face="serif">ПОСЛЕ ПОКУПКИ НАПИШИТЕ В ПОДДЕРЖКУ, ДАННЫЕ ПРИДУТ ВАМ ЧЕРЕЗ НЕСКОЛЬКО МИНУТ ПОСЛЕ ПОКУПКИ!</font></big></p>
+    <div class="col-md-6">
+        <div class="about__items">
+            <div class="about__imgs">
+                <img src="{{ url_for('static', filename='img/about/1.jpg') }}" alt="Солнечное затмение" class="img-fluid" align="left" width="500">
+            </div>
+        </div>
     </div>
+   
+    
+    <div class="col-md-6 ">
+        <h1 class="text-primary"><font size="8" face="serif"><b>699.99 ₽</b></font></h1>
+        <form method="POST" action="{{ url_for('add_to_cart', currency='Легенды аниме') }}">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">
+                    Добавить в корзину<i class="bi bi-cart"></i>
+            </button>
+        </form>
+        <br>
+          <h1 class="text-white"><font size="5" face="serif">Лучшая цена  <i class="bi bi-check"></i></font></h1>
+          <p><big><font size="2" color="#808080" face="serif">ДАЕМ ГАРАНТИЮ САМОЙ НИЗКОЙ ЦЕНЫ ВО ВСЕМ РУНЕТЕ!</font></big></p>
+          <h1 class="text-white"><font size="5" face="serif">Быстрая доставка  <i class="bi bi-truck"></i></font></h1>
+          <p><big><font size="2" color="#808080" face="serif">ПОСЛЕ ПОКУПКИ НАПИШИТЕ В ПОДДЕРЖКУ, ДАННЫЕ ПРИДУТ ВАМ ЧЕРЕЗ НЕСКОЛЬКО МИНУТ ПОСЛЕ ПОКУПКИ!</font></big></p>
+      </div>
 </div>
 
 <div class="text__block">
     <h1 class="text-white"><big><b>ОПИСАНИЕ</b></big></h1>
-    <p class="text-white"><big><b>Сохраняйте хладнокровие с набором «ПОТУСТОРОНИЕ ЛЕГЕНДЫ»!</b></big></p>
 
-    <p><big>Заручитесь поддержкой героев из иного мира с набором «Потусторонние легенды», который включает:
-      <br>
-    экипировку <b>сумрачной Добытчицы</b>
+    <p class="text-white"><big>В набор входит сразу 3 комплекта скинов :
+        <br>
+    Скин <b>Гонщика Мидаса</b>
     <br>
-   украшение на спину <b>«Мрачный набор добытчицы»</b>
+    украшение на спину <b>«Золотой шлем»</b>
     <br>
-    кирку <b>«Мрачная мотыга»</b>
+    кирка <b>«Многокаратная катана»</b>
     <br>
-    экипировку <b>потусторонней Бомбистки</b>
+    Скин <b>Рокси Рикошет</b>
     <br>
-    украшение на спину <b>«Клатч зла»</b>
+    украшение на спину <b>«Винтик»</b>
     <br>
-    кирку <b>«Одержимая долбилка»</b>
+    кирка <b>«Клубничный клинок»</b>
+    <br>
+    Скин <b>Боевой Пенни</b>
+    <br>
+    украшение на спину <b>«Маленькая чёрная сумка»</b>
+    <br>
+    кирка <b>«Золотистый топорик»</b>
+    <br>
+    Эмоция <b>«Маленький карт»</b>
     <br>
     </big></p>
-
 </div>
 
-
 {% if user %}
-<h2 class="text-white">Оставить отзыв</h2>
-<form method="POST" action="{{ url_for('add_review', product='Потустороние легенды') }}" enctype="multipart/form-data">
-  <div class="form-group">
-    <label for="rating" class="text-white">Рейтинг:</label>
-    <select class="form-control" id="rating" name="rating">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <br>
-    <label for="comment" class="text-white">Комментарий:</label>
-    <textarea class="form-control" id="comment" name="comment"></textarea>
-  </div>
-  <br>
-  <div class="form-group">
+  <h2 class="text-white">Оставить отзыв</h2>
+  <form method="POST" action="{{ url_for('add_review', product='Легенды аниме') }}" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="rating" class="text-white">Рейтинг:</label>
+      <select class="form-control" id="rating" name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <br>
+      <label for="comment" class="text-white">Комментарий:</label>
+      <textarea class="form-control" id="comment" name="comment"></textarea>
+    </div>
+    <div class="form-group">
       <br>
       <label for="images" class="text-white">Загрузить изображения:</label>
       <input type="file" class="form-control-file" id="images" name="images" multiple>
     </div>
     <br>
-  <button type="submit" class="btn btn-primary">Отправить отзыв</button>
-</form>
+    <button type="submit" class="btn btn-primary">Отправить отзыв</button>
+  </form>
 
-<h2 class="text-white">Отзывы:</h2>
-<h2 class="text-white">Общий рейтинг: {{ "%.1f"|format(average_rating) }}</h2>
+  <h2 class="text-white">Отзывы:</h2>
+  <h2 class="text-white">Общий рейтинг: {{ "%.1f"|format(average_rating) }}</h2>
 
-{% for review in reviews %}
+  {% for review in reviews %}
   <div class="card mb-3">
     <div class="card-body">
       <div class="d-flex justify-content-between align-items-center">
@@ -195,43 +198,43 @@
   </div>
 {% endfor %}
 {% else %}
-<p class="text-white">Пожалуйста, <a href="{{ url_for('login') }}" class="text-white">войдите</a> или <a href="{{ url_for('register') }}" class="text-white">зарегистрируйтесь</a>, чтобы оставить отзыв.</p>
+  <p class="text-white">Пожалуйста, <a href="{{ url_for('login') }}" class="text-white">войдите</a> или <a href="{{ url_for('register') }}" class="text-white">зарегистрируйтесь</a>, чтобы оставить отзыв.</p>
 {% endif %}
 
 <footer class="footer bg-dark">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <h3 class="footer__col-title text-white">Навигация</h3>
-        <ul class="footer__col-list list-unstyled">
-          <li><a href="{{ url_for('index') }}" class="text-white">Главная</a></li>
-          <li><a href="{{ url_for('help') }}" class="text-white">Помощь</a></li>
-          <li><a href="{{ url_for('garantiya') }}" class="text-white">Гарантия</a></li>
-        </ul>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h3 class="footer__col-title text-white">Навигация</h3>
+          <ul class="footer__col-list list-unstyled">
+            <li><a href="{{ url_for('index') }}" class="text-white">Главная</a></li>
+            <li><a href="{{ url_for('help') }}" class="text-white">Помощь</a></li>
+            <li><a href="{{ url_for('garantiya') }}" class="text-white">Гарантия</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3 class="footer__col-title text-white">Контакты</h3>
+          <ul class="footer__col-list footer__col-list--contacts list-unstyled">
+            <li><a href="mailto:example@mail.com" class="text-white">example@mail.com</a></li>
+            <li><a href="tel:+78005553535" class="text-white">+7 (800) 555-35-35</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3 class="footer__col-title text-white">Социальные сети</h3>
+          <ul class="footer__col-list footer__col-list--socials list-unstyled">
+            <li><a href="https://vk.com/1flipstore1" target="_blank" class="text-white"><i class="fab fa-vk"></i></a></li>
+            <li><a href="#" target="_blank" class="text-white"><i class="bi bi-telegram"></i></a></li>
+            <li><a href="#" target="_blank" class="text-white"><i class="bi bi-whatsapp"></i></a></li>
+          </ul>
+        </div>
       </div>
-      <div class="col-md-4">
-        <h3 class="footer__col-title text-white">Контакты</h3>
-        <ul class="footer__col-list footer__col-list--contacts list-unstyled">
-          <li><a href="mailto:example@mail.com" class="text-white">example@mail.com</a></li>
-          <li><a href="tel:+78005553535" class="text-white">+7 (800) 555-35-35</a></li>
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <h3 class="footer__col-title text-white">Социальные сети</h3>
-        <ul class="footer__col-list footer__col-list--socials list-unstyled">
-          <li><a href="https://vk.com/1flipstore1" target="_blank" class="text-white"><i class="fab fa-vk"></i></a></li>
-          <li><a href="#" target="_blank" class="text-white"><i class="bi bi-telegram"></i></a></li>
-          <li><a href="#" target="_blank" class="text-white"><i class="bi bi-whatsapp"></i></a></li>
-        </ul>
+      <div class="footer__copy text-center text-white">
+        <p>&copy; 1FLIPSTORE1, 2024. Все права защищены.</p>
       </div>
     </div>
-    <div class="footer__copy text-center text-white">
-      <p>&copy; 1FLIPSTORE1, 2024. Все права защищены.</p>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
-</html> 
+</html>
