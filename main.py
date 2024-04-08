@@ -1,10 +1,12 @@
 from flask import Flask, request, session, render_template, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
 import jwt
 import datetime
 import re
 import os
+import uuid
 
 
 app = Flask(__name__, template_folder='template')
@@ -13,7 +15,13 @@ app.config['SECRET_KEY'] = 'secret_key'
 db = SQLAlchemy(app)
 
 messages = []
+UPLOAD_FOLDER = os.path.join('static', 'uploads')
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+def get_unique_filename(filename):
+    _, ext = os.path.splitext(filename)
+    unique_filename = f"{uuid.uuid4().hex}{ext}"
+    return unique_filename
 
 # Словарь с вопросами и соответствующими ответами
 questions_and_answers = {
@@ -254,9 +262,23 @@ def add_review(product):
     if not rating or not comment:
         return 'Отсутствуют обязательные поля', 400
 
+    images = request.files.getlist('images')
+
     review = Review(user_id=user.id, product=product, rating=rating, comment=comment)
     db.session.add(review)
     db.session.commit()
+
+    for image in images:
+        if image.filename:
+            filename = get_unique_filename(image.filename)
+            image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            image.save(image_path)
+
+            review_image = ReviewImage(review_id=review.id, filename=filename, mimetype=image.mimetype)
+            db.session.add(review_image)
+
+    db.session.commit()
+
 
     if product == 'Легенды аниме':
         return redirect(url_for('index3'))
@@ -535,6 +557,8 @@ def index3():
     reviews = Review.query.filter_by(product='Легенды аниме').order_by(Review.created_at.desc()).all()
     average_rating = sum(review.rating for review in reviews) / len(reviews) if reviews else 0
     return render_template('index3.html', user=user, reviews=reviews, average_rating=average_rating)
+
+
 
 
 @app.route('/card3')
