@@ -105,9 +105,10 @@
   
   <div class="col-md-6 ">
       <h1 class="text-primary"><font size="8" face="serif"><b>649.99 ₽</b></font></h1>
+      <s style="text-decoration: line-through #007bff 3px; color: #fff;"><big>800.99 ₽</big></s>
       <form method="POST" action="{{ url_for('add_to_cart', currency='Вечная мерзлота') }}">
           <button class="btn btn-primary btn-lg btn-block" type="submit">
-                  Добавить в корзину<i class="bi bi-cart"></i>
+                  Добавить в корзину <i class="bi bi-cart"></i>
           </button>
       </form>
       <br>
@@ -136,7 +137,7 @@
 
 {% if user %}
 <h2 class="text-white">Оставить отзыв</h2>
-<form method="POST" action="{{ url_for('add_review', product='Вечная мерзлота') }}">
+<form method="POST" action="{{ url_for('add_review', product='Вечная мерзлота') }}" enctype="multipart/form-data">
   <div class="form-group">
     <label for="rating" class="text-white">Рейтинг:</label>
     <select class="form-control" id="rating" name="rating">
@@ -152,29 +153,52 @@
     <label for="comment" class="text-white">Комментарий:</label>
     <textarea class="form-control" id="comment" name="comment"></textarea>
   </div>
+  <div class="form-group">
+    <br>
+    <label for="images" class="text-white">Загрузить изображения:</label>
+    <input type="file" class="form-control-file" id="images" name="images" multiple>
+  </div>
   <br>
   <button type="submit" class="btn btn-primary">Отправить отзыв</button>
 </form>
 
 <h2 class="text-white">Отзывы:</h2>
-<h2 class="text-white">Общий рейтинг: {{ "%.1f"|format(average_rating) }}</h2>
+<div class="rating-container">
+  <div class="rating">
+    {% for i in range(1, 6) %}
+      {% if average_rating >= i %}
+        <span class="star filled">&#9733;</span>
+      {% elif average_rating > i - 1 %}
+        <span class="star partial" style="--rating: {{ average_rating - (i - 1) }};">&#9733;</span>
+      {% else %}
+        <span class="star">&#9733;</span>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <span class="rating-value">{{ average_rating }}</span>
+</div>
+
 
 {% for review in reviews %}
-<div class="card mb-3">
-<div class="card-body">
-  <div class="d-flex justify-content-between align-items-center">
-    <span class="text-black">{{ review.user.username }}</span>
-    <span class="text-black">Рейтинг: {{ review.rating }}</span>
-    {% if user and review.user_id == user.id %}
-    <form method="POST" action="{{ url_for('delete_review', review_id=review.id) }}">
-      <button type="submit" class="btn btn-danger btn-sm">Удалить отзыв</button>
-    </form>
-    {% endif %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <span class="text-black"><b><big>{{ review.user.username }}</big></b></span>
+        <span class="text-black">Рейтинг: {{ review.rating }}</span>
+        {% if user and review.user_id == user.id %}
+          <form method="POST" action="{{ url_for('delete_review', review_id=review.id) }}">
+            <button type="submit" class="btn btn-danger btn-sm">Удалить отзыв</button>
+          </form>
+        {% endif %}
+      </div>
+      <p class="card-text text-black">{{ review.comment }}</p>
+      {% for image in review.images %}
+        <img src="{{ url_for('static', filename='uploads/' + image.filename) }}" width="200" alt="{{ image.filename }}">
+      {% endfor %}
+      <br><br>
+      <p class="card-text text-muted">{{ review.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+    </div>
   </div>
-  <p class="card-text text-black">{{ review.comment }}</p>
-  <p class="card-text text-muted">{{ review.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
-</div>
-</div>
 {% endfor %}
 {% else %}
 <p class="text-white">Пожалуйста, <a href="{{ url_for('login') }}" class="text-white">войдите</a> или <a href="{{ url_for('register') }}" class="text-white">зарегистрируйтесь</a>, чтобы оставить отзыв.</p>
