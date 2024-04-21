@@ -105,9 +105,10 @@
   
   <div class="col-md-6 ">
       <h1 class="text-primary"><font size="8" face="serif"><b>619.99 ₽</b></font></h1>
+      <s style="text-decoration: line-through #007bff 3px; color: #fff;"><big>800.99 ₽</big></s>
       <form method="POST" action="{{ url_for('add_to_cart', currency='Золотые руки') }}">
           <button class="btn btn-primary btn-lg btn-block" type="submit">
-                  Добавить в корзину<i class="bi bi-cart"></i>
+                  Добавить в корзину <i class="bi bi-cart"></i>
           </button>
       </form>
       <br>
@@ -163,7 +164,21 @@
 </form>
 
 <h2 class="text-white">Отзывы:</h2>
-<h2 class="text-white">Общий рейтинг: {{ "%.1f"|format(average_rating) }}</h2>
+<div class="rating-container">
+  <div class="rating">
+    {% for i in range(1, 6) %}
+      {% if average_rating >= i %}
+        <span class="star filled">&#9733;</span>
+      {% elif average_rating > i - 1 %}
+        <span class="star partial" style="--rating: {{ average_rating - (i - 1) }};">&#9733;</span>
+      {% else %}
+        <span class="star">&#9733;</span>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <span class="rating-value">{{ average_rating }}</span>
+</div>
+
 
 {% for review in reviews %}
   <div class="card mb-3">
