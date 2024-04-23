@@ -49,13 +49,38 @@
         document.body.classList.remove("loaded_hiding");
       }, 500);
     };
+    
 
+    const sendButton = document.getElementById('send-button');
+    const messageInput = document.getElementById('message-input');
+
+    sendButton.addEventListener('click', sendMessage);
+    messageInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
+    });
+
+    function sendMessage() {
+        const message = $('#message-input').val().trim();
+        if (message !== '') {
+            $.ajax({
+                url: '/send_message',
+                type: 'POST',
+                data: {message: message},
+                success: function(response) {
+                    $('#message-input').val('');
+                    displayMessages(response.messages);
+                }
+            });
+        }
+    }
 
     
   </script>
 
   
-<div class="help-icon">
+<div class="help-icon hover-target">
     <i class="fas fa-question-circle"></i>
 </div>
 
@@ -64,14 +89,15 @@
         <h3>Помощь</h3>
         <span class="help-popup-close">&times;</span>
     </div>
-    <div class="help-popup-body">
+    <div class="help-popup-body ">
         <div class="help-messages"></div>
         <div class="help-message user">
             <div class="help-message-avatar">
                 <i class="fas fa-user"></i>
             </div>
-            <div class="help-message-text">
+            <div class="help-message-input">
                 <input type="text" placeholder="Введите сообщение..." id="message-input">
+                <button id="send-button" onclick="sendMessage()">Отправить</button>
             </div>
         </div>
     </div>
@@ -144,11 +170,11 @@
     <span></span>
   </label>
   <ul class="menu__box">
-    <a class="header__logo" href="{{ url_for('index') }}">1FLIPSTORE1</a>
+    <a class="header__logo hover-target" href="{{ url_for('index') }}">1FLIPSTORE1</a>
     <br><br>
-    <a class="menu__item" href="{{ url_for('index') }}">ГЛАВНАЯ</a>
-    <a class="menu__item" href="{{ url_for('help') }}">ПОМОЩЬ</a>
-    <a class="menu__item" href="{{ url_for('garantiya') }}">ГАРАНТИЯ</a>
+    <a class="menu__item hover-target" href="{{ url_for('index') }}">ГЛАВНАЯ</a>
+    <a class="menu__item hover-target" href="{{ url_for('help') }}">ПОМОЩЬ</a>
+    <a class="menu__item hover-target" href="{{ url_for('garantiya') }}">ГАРАНТИЯ</a>
   </ul>
 </div>
 <br><br>
@@ -156,17 +182,16 @@
     {% if user %}
     <span class="username"><span class="username-first-letter">{{ user.username[0] }}</span>{{ user.username[1:] }}   <big><big><big><i class="bi bi-person-fill"></i></big></big></big></span>
     <br>
-    <a class="menu__log" href="{{ url_for('logout') }}">Выйти</a>
+    <a class="menu__log hover-target" href="{{ url_for('logout') }}">Выйти</a>
     <br>
-    <a class="menu__log" href="{{ url_for('cart') }}">Корзина <big><big><big><i class="bi bi-cart"></i></big></big></big></a>
+    <a class="menu__log hover-target" href="{{ url_for('cart') }}">Корзина <big><big><big><i class="bi bi-cart"></i></big></big></big></a>
     {% else %}
-    <a class="menu__log" href="{{ url_for('register') }}">Регистрация</a>
+    <a class="menu__log hover-target" href="{{ url_for('register') }}">Регистрация</a>
     <br>
-    <a class="menu__log" href="{{ url_for('login') }}">Войти</a>
+    <a class="menu__log hover-target" href="{{ url_for('login') }}">Войти</a>
     {% endif %}
 </div>
 <br><br><br>
-
 
             <button class="nav-toggle" type="button">
                 <span class="nav-toggle__item">МЕНЮ</span>
@@ -183,6 +208,9 @@
         <h1 class="intro__title"></h1>
         </div>
     </div>
+    
+
+    
 
 
 
@@ -328,14 +356,51 @@
         <div class="footer__col">
           <h3 class="footer__col-title">Социальные сети</h3>
           <ul class="footer__col-list footer__col-list--socials">
-            <li><a href="https://vk.com/1flipstore1" target="_blank"><i class="fab fa-vk"></i></a></li>
-            <li><a href="#" target="_blank"><i class="bi bi-telegram"></i></a></li>
-            <li><a href="#" target="_blank"><i class="bi bi-whatsapp"></i></a></li>
+            <li><a href="https://vk.com/1flipstore1" target="_blank"><i class="fab fa-vk hover-target"></i></a></li>
+            <li><a href="#" target="_blank"><i class="bi bi-telegram hover-target" ></i></a></li>
+            <li><a href="#" target="_blank"><i class="bi bi-whatsapp hover-target"></i></a></li>
           </ul>
         </div>
       </div>
       <div class="footer__copy">
         <p>&copy; 1FLIPSTORE1, 2024. Все права защищены.</p>
   </footer>
+
+  <!-- CURSOR -->
+    <div class='cursor' id="cursor"></div>
+    <div class='cursor2' id="cursor2"></div>
+	<div class='cursor3' id="cursor3"></div>
+
+  <script>
+
+    (function($) { "use strict";
+        
+  
+      document.getElementsByTagName("body")[0].addEventListener("mousemove", function(n) {
+          t.style.left = n.clientX + "px", 
+      t.style.top = n.clientY + "px", 
+      e.style.left = n.clientX + "px", 
+      e.style.top = n.clientY + "px", 
+      i.style.left = n.clientX + "px", 
+      i.style.top = n.clientY + "px"
+      });
+      var t = document.getElementById("cursor"),
+          e = document.getElementById("cursor2"),
+          i = document.getElementById("cursor3");
+      function n(t) {
+          e.classList.add("hover"), i.classList.add("hover")
+      }
+      function s(t) {
+          e.classList.remove("hover"), i.classList.remove("hover")
+      }
+      s();
+      for (var r = document.querySelectorAll(".hover-target"), a = r.length - 1; a >= 0; a--) {
+          o(r[a])
+      }
+      function o(t) {
+          t.addEventListener("mouseover", n), t.addEventListener("mouseout", s)
+      }
+  })(jQuery); 
+      </script> 
 </body>
 </html>
