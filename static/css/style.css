@@ -727,11 +727,63 @@ select#rating {
 }
 
 .about__img {
+	transition: transform .2s linear;
+}
+
+.img__1 {
 	background: linear-gradient(to bottom,
 	#f38181, #fce38a);
 
-	transition: transform .2s linear;
 }
+
+.img__2 {
+	background: linear-gradient(to bottom,
+	#696969, #FFE4E1);
+
+}
+
+.img__3 {
+	background: linear-gradient(to bottom,
+	#333, #FFE4E1);
+
+}
+
+.img__4 {
+	background: linear-gradient(to bottom,
+	#9932CC, #EE82EE);
+
+}
+
+.img__5 {
+	background: linear-gradient(to bottom,
+	#E0FFFF, #87CEEB);
+
+}
+
+.img__6 {
+	background: linear-gradient(to bottom,
+	#4169E1, #E0FFFF);
+
+}
+
+.img__7 {
+	background: linear-gradient(to bottom,
+	#333, #FFFF00);
+
+}
+
+.img__8 {
+	background: linear-gradient(to bottom,
+	#5F9EA0, #4169E1);
+
+}
+
+.img__9 {
+	background: linear-gradient(to bottom,
+	#191970, #4169E1);
+
+}
+
 
 .about__img img {
 	display: block;
