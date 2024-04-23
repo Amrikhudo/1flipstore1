@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.min.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>{% block title %}Вход{% endblock %}</title>
 </head>
 <body>
@@ -50,9 +51,9 @@
 
         <input type="password" id="password" name="password" placeholder="Пароль" autocomplete="off" required />
 
-        <a class="register" href="{{ url_for('register') }}">Зарегистрироваться</a>
+        <a class="register hover-target" href="{{ url_for('register') }}">Зарегистрироваться</a>
 
-        <input type="submit" name="submit" value="Вход" />
+        <input class="hover-target" type="submit" name="submit" value="Вход" />
     </form>
 
 
@@ -106,5 +107,6 @@
         <div class="footer__copy">
           <p>&copy; 1FLIPSTORE1, 2024. Все права защищены.</p>
     </footer>
+
 </body>
 </html>
