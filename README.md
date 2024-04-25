@@ -2,7 +2,6 @@
 ![Статус проекта](https://img.shields.io/badge/Статус-В%20разработке-yellow)
 ![Звезды](https://img.shields.io/github/stars/Amrikhudo/my-biggest-project?style=social)
 ![Проблемы](https://img.shields.io/github/issues/Amrikhudo/my-biggest-project)
-![Покрытие кода](https://img.shields.io/badge/Покрытие%20кода-90%25-brightgreen)
 ![Форки](https://img.shields.io/github/forks/Amrikhudo/my-biggest-project?style=social)
 
 
