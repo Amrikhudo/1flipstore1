@@ -1,13 +1,11 @@
 from flask import Flask, request, session, render_template, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-from werkzeug.utils import secure_filename
 import jwt
 import datetime
 import re
 import os
 import uuid
-
 
 app = Flask(__name__, template_folder='template')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -18,10 +16,12 @@ messages = []
 UPLOAD_FOLDER = os.path.join('static', 'uploads')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+
 def get_unique_filename(filename):
     _, ext = os.path.splitext(filename)
     unique_filename = f"{uuid.uuid4().hex}{ext}"
     return unique_filename
+
 
 # Словарь с вопросами и соответствующими ответами
 questions_and_answers = {
@@ -35,6 +35,7 @@ questions_and_answers = {
     r'гарантия|возврат': 'У нас действует гарантия на все товары. Если вы обнаружили брак или товар не соответствует заявленному качеству, вы можете вернуть его в течение 14 дней с момента получения. Подробнее о гарантии и возврате вы можете узнать на нашем сайте в соответствующем разделе.',
 }
 
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
@@ -44,11 +45,13 @@ class User(db.Model):
 
     def __repr__(self):
         return f'<User {self.username}>'
-    
+
+
 class Cart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     items = db.relationship('CartItem', backref='cart', lazy='dynamic')
+
 
 class CartItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -77,7 +80,7 @@ class ReviewImage(db.Model):
     mimetype = db.Column(db.String(100))
 
     review = db.relationship('Review', backref=db.backref('images', lazy='dynamic'))
-    
+
 
 with app.app_context():
     db.create_all()
@@ -111,11 +114,11 @@ def get_products():
     ]
     return jsonify(products)
 
+
 @app.route('/api/cart', methods=['GET'])
 def get_cart():
     if 'token' not in session:
         return jsonify({'error': 'Unauthorized'}), 401
-
     try:
         data = jwt.decode(session['token'], app.config['SECRET_KEY'], algorithms=['HS256'])
         user = User.query.get(data['user_id'])
@@ -132,9 +135,10 @@ def get_cart():
     cart = user.cart
     if cart is None:
         return jsonify([])
-
-    cart_items = [{'id': item.id, 'name': item.currency, 'price': item.price, 'quantity': item.quantity} for item in cart.items]
+    cart_items = [{'id': item.id, 'name': item.currency, 'price': item.price, 'quantity': item.quantity} for item in
+                  cart.items]
     return jsonify(cart_items)
+
 
 @app.route('/api/cart/add', methods=['POST'])
 def add_to_cart_api():
@@ -173,6 +177,7 @@ def add_to_cart_api():
 
     return jsonify({'message': 'Product added to cart'}), 200
 
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'GET':
@@ -187,13 +192,19 @@ def register():
         return render_template('register.html', error='Пожалуйста, заполните все поля.', error_color='red')
 
     if User.query.filter_by(username=username).first():
-        return render_template('register.html', error='Это имя пользователя уже занято. Пожалуйста, выберите другое.', error_color='red')
+        return render_template('register.html', error='Это имя пользователя уже занято. Пожалуйста, выберите другое.',
+                               error_color='red')
 
     if User.query.filter_by(email=email).first():
-        return render_template('register.html', error='Этот адрес электронной почты уже зарегистрирован. Пожалуйста, используйте другой адрес.', error_color='red')
+        return render_template('register.html',
+                               error='Этот адрес электронной почты уже зарегистрирован. Пожалуйста, используйте другой адрес.',
+                               error_color='red')
 
-    if len(password) < 8 or not any(char.isdigit() for char in password) or not any(char.isupper() for char in password):
-        return render_template('register.html', error='Пароль должен содержать не менее 8 символов, включая хотя бы одну цифру и одну заглавную букву.', error_color='red')
+    if len(password) < 8 or not any(char.isdigit() for char in password) or not any(
+            char.isupper() for char in password):
+        return render_template('register.html',
+                               error='Пароль должен содержать не менее 8 символов, включая хотя бы одну цифру и одну заглавную букву.',
+                               error_color='red')
 
     hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
     new_user = User(username=username, email=email, password=hashed_password)
@@ -205,6 +216,7 @@ def register():
     db.session.commit()
 
     return redirect(url_for('login'))
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -218,10 +230,14 @@ def login():
     user = User.query.filter_by(username=username).first()
 
     if not user:
-        return render_template('login.html', error='Неверное имя пользователя или пароль. Пожалуйста, попробуйте снова.', error_color='red')
+        return render_template('login.html',
+                               error='Неверное имя пользователя или пароль. Пожалуйста, попробуйте снова.',
+                               error_color='red')
 
     if not check_password_hash(user.password, password):
-        return render_template('login.html', error='Неверное имя пользователя или пароль. Пожалуйста, попробуйте снова.', error_color='red')
+        return render_template('login.html',
+                               error='Неверное имя пользователя или пароль. Пожалуйста, попробуйте снова.',
+                               error_color='red')
 
     token = jwt.encode({
         'user_id': user.id,
@@ -231,11 +247,11 @@ def login():
     session['token'] = token
     return redirect(url_for('index'))
 
+
 @app.route('/logout')
 def logout():
     session.pop('token', None)
     return redirect(url_for('index'))
-
 
 
 @app.route('/add_review/<product>', methods=['POST'])
@@ -279,7 +295,6 @@ def add_review(product):
 
     db.session.commit()
 
-
     if product == 'Легенды аниме':
         return redirect(url_for('index3'))
     elif product == 'Крест-накрест':
@@ -298,7 +313,7 @@ def add_review(product):
         return redirect(url_for('index10'))
     elif product == 'Потустороние легенды':
         return redirect(url_for('index11'))
-    
+
 
 @app.route('/delete_review/<int:review_id>', methods=['POST'])
 def delete_review(review_id):
@@ -346,9 +361,6 @@ def delete_review(review_id):
         return redirect(url_for('index11'))
 
 
-
-
-
 @app.route('/add_to_cart/<currency>', methods=['POST'])
 def add_to_cart(currency):
     if 'token' not in session:
@@ -384,6 +396,7 @@ def add_to_cart(currency):
 
     return redirect(url_for('cart'))
 
+
 @app.route('/cart')
 def cart():
     if 'token' not in session:
@@ -410,7 +423,7 @@ def cart():
 
     total = sum(item.price * item.quantity for item in cart.items)
     return render_template('cart.html', cart=cart, total=total)
-    
+
 
 @app.route('/update_cart/<int:item_id>/<action>', methods=['POST'])
 def update_cart(item_id, action):
@@ -443,6 +456,7 @@ def update_cart(item_id, action):
     db.session.commit()
     return redirect(url_for('cart'))
 
+
 @app.route('/remove_from_cart/<int:item_id>', methods=['POST'])
 def remove_from_cart(item_id):
     if 'token' not in session:
@@ -469,9 +483,6 @@ def remove_from_cart(item_id):
     return redirect(url_for('cart'))
 
 
-
-
-
 @app.route('/')
 def index():
     token = session.get('token')
@@ -487,7 +498,6 @@ def index():
             session.pop('token', None)
 
     return render_template('index.html', top_element="main")
-
 
 
 @app.route('/send_message', methods=['POST'])
@@ -524,6 +534,7 @@ def garantiya():
 
     return render_template('garantiya.html')
 
+
 @app.route('/help')
 def help():
     token = session.get('token')
@@ -559,8 +570,6 @@ def index3():
     return render_template('index3.html', user=user, reviews=reviews, average_rating=average_rating)
 
 
-
-
 @app.route('/card3')
 def index4():
     token = session.get('token')
@@ -577,6 +586,7 @@ def index4():
     reviews = Review.query.filter_by(product='Крест-накрест').order_by(Review.created_at.desc()).all()
     average_rating = sum(review.rating for review in reviews) / len(reviews) if reviews else 0
     return render_template('index4.html', user=user, reviews=reviews, average_rating=average_rating)
+
 
 @app.route('/card4')
 def index5():
@@ -595,6 +605,7 @@ def index5():
     average_rating = sum(review.rating for review in reviews) / len(reviews) if reviews else 0
     return render_template('index5.html', user=user, reviews=reviews, average_rating=average_rating)
 
+
 @app.route('/card5')
 def index6():
     token = session.get('token')
@@ -611,6 +622,7 @@ def index6():
     reviews = Review.query.filter_by(product='Технолига').order_by(Review.created_at.desc()).all()
     average_rating = sum(review.rating for review in reviews) / len(reviews) if reviews else 0
     return render_template('index6.html', user=user, reviews=reviews, average_rating=average_rating)
+
 
 @app.route('/card6')
 def index7():
@@ -629,6 +641,7 @@ def index7():
     average_rating = sum(review.rating for review in reviews) / len(reviews) if reviews else 0
     return render_template('index7.html', user=user, reviews=reviews, average_rating=average_rating)
 
+
 @app.route('/card7')
 def index8():
     token = session.get('token')
@@ -645,6 +658,7 @@ def index8():
     reviews = Review.query.filter_by(product='Подписка fornite crew').order_by(Review.created_at.desc()).all()
     average_rating = sum(review.rating for review in reviews) / len(reviews) if reviews else 0
     return render_template('index8.html', user=user, reviews=reviews, average_rating=average_rating)
+
 
 @app.route('/card8')
 def index9():
@@ -663,6 +677,7 @@ def index9():
     average_rating = sum(review.rating for review in reviews) / len(reviews) if reviews else 0
     return render_template('index9.html', user=user, reviews=reviews, average_rating=average_rating)
 
+
 @app.route('/card9')
 def index10():
     token = session.get('token')
@@ -680,6 +695,7 @@ def index10():
     average_rating = sum(review.rating for review in reviews) / len(reviews) if reviews else 0
     return render_template('index10.html', user=user, reviews=reviews, average_rating=average_rating)
 
+
 @app.route('/card10')
 def index11():
     token = session.get('token')
@@ -696,7 +712,6 @@ def index11():
     reviews = Review.query.filter_by(product='Потустороние легенды').order_by(Review.created_at.desc()).all()
     average_rating = sum(review.rating for review in reviews) / len(reviews) if reviews else 0
     return render_template('index11.html', user=user, reviews=reviews, average_rating=average_rating)
-
 
 
 if __name__ == '__main__':
